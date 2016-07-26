@@ -1,0 +1,23 @@
+//
+//  CSWFramework.pch
+//  CSWFramework
+//
+//  Created by 007 on 16/5/23.
+//  Copyright © 2016年 陈少文. All rights reserved.
+//
+
+#ifndef CSWFramework_pch
+#define CSWFramework_pch
+
+#import <UIKit/UIKit.h>
+
+//屏幕尺寸定义
+#define CSWSCREEN_WIDTH  [UIScreen mainScreen].bounds.size.width
+#define CSWSCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
+#define CSWSCREEN_SIZE   [UIScreen mainScreen].bounds.size
+#define CSWSCREEN_RECT   [UIScreen mainScreen].bounds
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* CSWFramework_pch */
