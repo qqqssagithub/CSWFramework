@@ -1,2 +1,2 @@
 # CSWFramework
-一个快速构架项目框架的Framework
+一个快速搭建项目框架的Framework
