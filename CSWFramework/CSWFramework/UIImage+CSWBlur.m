@@ -10,15 +10,16 @@
 #import <Accelerate/Accelerate.h>
 
 CGFloat ImageDefaultSaturationDeltaFactor = 1.0f;
+CGFloat blurRadius = 30;
 
 @implementation UIImage (CSWBlur)
 
 - (UIImage *)blurWithNil {
-    return [self blurWithRadius:50.0 tintColor:nil];
+    return [self blurWithRadius:blurRadius tintColor:nil];
 }
 
 - (UIImage *)blurWithTintColor:(UIColor *)tintColor {
-    return [self blurWithRadius:50.0 tintColor:tintColor];
+    return [self blurWithRadius:blurRadius tintColor:tintColor];
 }
 
 - (UIImage *)blurWithRadius:(CGFloat)radius tintColor:(UIColor *)tintColor {

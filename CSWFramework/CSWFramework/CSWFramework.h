@@ -24,9 +24,10 @@ FOUNDATION_EXPORT const unsigned char CSWFrameworkVersionString[];
 #import <CSWFramework/CSWAlertView.h>//提示框
 #import <CSWFramework/CSWFlashingAlertView.h>//闪动提示框
 #import <CSWFramework/CSWNetworkMonitoringManager.h>//网络监控类
-#import <CSWFramework/CSWScreenShot.h>//屏幕截图(指定位置)
+#import <CSWFramework/CSWScreenShot.h>//指定屏幕位置进行截图
 #import <CSWFramework/UIImage+CSWBlur.h>//图片模糊
-#import <CSWFramework/CSWProgressView.h>//遮挡界面
+#import <CSWFramework/CSWProgressView.h>//加载遮挡界面
 #import <CSWFramework/AFNetworking.h>
+#import <CSWFramework/CSWBlurBackgroundView.h>
 //定制类
 #import <CSWFramework/URLHelp.h>

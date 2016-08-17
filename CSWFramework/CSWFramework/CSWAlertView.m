@@ -12,43 +12,43 @@
 
 @implementation CSWAlertView
 
-+ (instancetype)shareCSWAlertView {
-    static CSWAlertView *shareCSWAlertView = nil;
++ (instancetype)sharedCSWAlertView {
+    static CSWAlertView *sharedCSWAlertView = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        shareCSWAlertView = [[CSWAlertView alloc] init];
-        shareCSWAlertView.backColor = [UIColor whiteColor];
-        shareCSWAlertView.isBlur = YES;
-        shareCSWAlertView.title = nil;
-        shareCSWAlertView.message = nil;
-        shareCSWAlertView.cancelButton = nil;
-        shareCSWAlertView.otherButton = nil;
+        sharedCSWAlertView = [[CSWAlertView alloc] init];
+        sharedCSWAlertView.backColor = [UIColor whiteColor];
+        sharedCSWAlertView.isBlur = YES;
+        sharedCSWAlertView.title = nil;
+        sharedCSWAlertView.message = nil;
+        sharedCSWAlertView.cancelButton = nil;
+        sharedCSWAlertView.otherButton = nil;
     });
-    return shareCSWAlertView;
+    return sharedCSWAlertView;
 }
 
 + (instancetype)initWithBackColor:(UIColor *)backColor title:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitle:(NSString *)otherButtonTitle isBlur:(BOOL)isBlur {
-    CSWAlertView *shareCSWAlertView = [CSWAlertView shareCSWAlertView];
+    CSWAlertView *sharedCSWAlertView = [CSWAlertView sharedCSWAlertView];
     if (title == nil && message == nil) {
-        return shareCSWAlertView;
+        return sharedCSWAlertView;
     }
     if (cancelButtonTitle == nil && cancelButtonTitle == nil) {
-        return shareCSWAlertView;
+        return sharedCSWAlertView;
     }
-    [shareCSWAlertView creatUIWithBackColor:backColor Title:title message:message cancelButtonTitle:cancelButtonTitle otherButtonTitle:otherButtonTitle isBlur:isBlur];
-    return shareCSWAlertView;
+    [sharedCSWAlertView creatUIWithBackColor:backColor Title:title message:message cancelButtonTitle:cancelButtonTitle otherButtonTitle:otherButtonTitle isBlur:isBlur];
+    return sharedCSWAlertView;
 }
 
 + (instancetype)initWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitle:(NSString *)otherButtonTitle {
-    CSWAlertView *shareCSWAlertView = [CSWAlertView shareCSWAlertView];
+    CSWAlertView *sharedCSWAlertView = [CSWAlertView sharedCSWAlertView];
     if (title == nil && message == nil) {
-        return shareCSWAlertView;
+        return sharedCSWAlertView;
     }
     if (cancelButtonTitle == nil && cancelButtonTitle == nil) {
-        return shareCSWAlertView;
+        return sharedCSWAlertView;
     }
-    [shareCSWAlertView creatUIWithBackColor:shareCSWAlertView.backColor Title:title message:message cancelButtonTitle:cancelButtonTitle otherButtonTitle:otherButtonTitle isBlur:shareCSWAlertView.isBlur];
-    return shareCSWAlertView;
+    [sharedCSWAlertView creatUIWithBackColor:sharedCSWAlertView.backColor Title:title message:message cancelButtonTitle:cancelButtonTitle otherButtonTitle:otherButtonTitle isBlur:sharedCSWAlertView.isBlur];
+    return sharedCSWAlertView;
 }
 
 + (void)initWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle {
@@ -58,8 +58,8 @@
     if (cancelButtonTitle == nil) {
         return;
     }
-    CSWAlertView *shareCSWAlertView = [CSWAlertView shareCSWAlertView];
-    [shareCSWAlertView creatUIWithBackColor:shareCSWAlertView.backColor Title:title message:message cancelButtonTitle:cancelButtonTitle otherButtonTitle:nil isBlur:shareCSWAlertView.isBlur];
+    CSWAlertView *sharedCSWAlertView = [CSWAlertView sharedCSWAlertView];
+    [sharedCSWAlertView creatUIWithBackColor:sharedCSWAlertView.backColor Title:title message:message cancelButtonTitle:cancelButtonTitle otherButtonTitle:nil isBlur:sharedCSWAlertView.isBlur];
 }
 
 - (void)creatUIWithBackColor:(UIColor *)backColor Title:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitle:(NSString *)otherButtonTitle isBlur:(BOOL)isBlur {
@@ -119,8 +119,11 @@
     whiteView.userInteractionEnabled = YES;
     whiteView.clipsToBounds = YES;
     whiteView.center = self.center;
-    UIImage *tempImage = [CSWScreenShot screenShotWithRect:whiteView.frame];
-    whiteView.image = [tempImage blurWithRadius:15.0 tintColor:nil];
+    
+    if (isBlur) {
+        UIImage *tempImage = [CSWScreenShot screenShotWithRect:whiteView.frame];
+        whiteView.image = [tempImage blurWithRadius:15.0 tintColor:nil];
+    }
     
     if (backColor == nil) {
         backColor = self.backColor;
@@ -168,15 +171,14 @@
     } completion:^(BOOL finished) {
         if (isBlur == YES) {
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [_cancelButton setBackgroundImage:[self imageWithColor:[backColor colorWithAlphaComponent:0.7]] forState:UIControlStateNormal];
+                [_cancelButton setBackgroundImage:[self imageWithColor:[backColor colorWithAlphaComponent:0.6]] forState:UIControlStateNormal];
                 if (otherButtonTitle != nil) {
-                    [_otherButton setBackgroundImage:[self imageWithColor:[backColor colorWithAlphaComponent:0.7]] forState:UIControlStateNormal];
+                    [_otherButton setBackgroundImage:[self imageWithColor:[backColor colorWithAlphaComponent:0.6]] forState:UIControlStateNormal];
                 }
-                topView.alpha = 0.7;
+                topView.alpha = 0.6;
             });
         }
     }];
-    
     
     [alertWindow addSubview:self];
 }

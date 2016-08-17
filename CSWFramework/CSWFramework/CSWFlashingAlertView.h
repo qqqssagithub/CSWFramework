@@ -22,7 +22,7 @@
 /**
  *共享单列
  */
-+ (instancetype)shareCSWFlashingAlertView;
++ (instancetype)sharedCSWFlashingAlertView;
 
 /**
  *采用默认设置

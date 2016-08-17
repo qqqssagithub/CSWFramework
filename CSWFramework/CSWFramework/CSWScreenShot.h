@@ -11,6 +11,16 @@
 @interface CSWScreenShot : NSObject
 
 /**
+ *  屏幕截图
+ *
+ *  @param view 指定view
+ *  @param rect 指定rect
+ *
+ *  @return 以image(png)的方式返回截图
+ */
++ (UIImage *)screenShotWithView:(UIView *)view Rect:(CGRect)rect;
+
+/**
  *参数 rect 截图的rect
  */
 + (UIImage *)screenShotWithRect:(CGRect)rect;

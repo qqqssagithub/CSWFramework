@@ -28,7 +28,7 @@ typedef void (^CancelBlock)();
 /**
  *共享单列
  */
-+ (instancetype)shareCSWAlertView;
++ (instancetype)sharedCSWAlertView;
 
 /**
  *!~自定制提示框,参数传nil,将采用默认配置

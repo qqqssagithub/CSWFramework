@@ -15,19 +15,26 @@
  */
 @property (nonatomic) UIColor   *backColor;     //背景颜色
 @property (nonatomic) BOOL      isBlur;         //背景是否透明
-@property (nonatomic) UIColor   *activityColor; //动画的颜色
+@property (nonatomic) UIColor   *activityColor; //动画的颜色（系统样式有效）
 @property (nonatomic) CGFloat   promptSize;     //文字尺寸大小
 @property (nonatomic) UIColor   *promptColor;   //文字颜色
+
+@property (nonatomic) BOOL systemIsBlackColor;        //系统样式是否为黑色（默认白色）
 
 /**
  *共享单列
  */
-+ (instancetype)shareCSWProgressView;
++ (instancetype)sharedCSWProgressView;
 
 /**
  *show
  */
 + (void)show;
+
+/**
+ *系统样式
+ */
++ (void)showSystem;
 
 /**
  *show

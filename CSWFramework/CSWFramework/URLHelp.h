@@ -15,6 +15,6 @@
 @property (nonatomic) NSString *song_url;
 @property (nonatomic) NSString *song_url_x;
 
-+ (instancetype)shareURLHelp;
++ (instancetype)sharedURLHelp;
 
 @end
