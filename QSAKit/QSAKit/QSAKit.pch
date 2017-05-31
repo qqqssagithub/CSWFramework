@@ -1,0 +1,30 @@
+//
+//  QSAKit.pch
+//  QSAKit
+//
+//  Created by 陈少文 on 17/2/3.
+//  Copyright © 2017年 qqqssa. All rights reserved.
+//
+
+#ifndef QSAKit_pch
+#define QSAKit_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#import <UIKit/UIKit.h>
+
+//主屏幕
+#define KEYWINDOW [UIApplication sharedApplication].keyWindow
+
+//屏幕尺寸定义
+#define QSAKit_SCREEN_WIDTH  [UIScreen mainScreen].bounds.size.width
+#define QSAKit_SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
+#define QSAKit_SCREEN_SIZE   [UIScreen mainScreen].bounds.size
+#define QSAKit_SCREEN_RECT   [UIScreen mainScreen].bounds
+
+//弱引用
+#define QSAKit_WEAK_SELF           __weak typeof(self)   weak_self = self
+#define QSAKit_WEAK_OBJECT(OBJECT) __weak typeof(OBJECT) weal_object = OBJECT
+
+#endif /* QSAKit_pch */
