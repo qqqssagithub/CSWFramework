@@ -10,8 +10,13 @@
 
 @implementation UIImage (QSAKitStretching)
 
-+ (UIImage *)resizableImage:(NSString *)imageName {
++ (UIImage *)resizableImage0:(NSString *)imageName {
     UIImage *image = [UIImage imageNamed:imageName];
+    UIEdgeInsets insets = UIEdgeInsetsMake(image.size.height/2, image.size.width/2, image.size.height/2 + 1, image.size.width/2 + 1);
+    return [image resizableImageWithCapInsets:insets];
+}
+
++ (UIImage *)resizableImage1:(UIImage *)image {
     UIEdgeInsets insets = UIEdgeInsetsMake(image.size.height/2, image.size.width/2, image.size.height/2 + 1, image.size.width/2 + 1);
     return [image resizableImageWithCapInsets:insets];
 }
