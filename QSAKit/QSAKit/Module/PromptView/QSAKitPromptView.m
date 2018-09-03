@@ -99,7 +99,7 @@
     
     activityIndicatorView.backgroundColor = [UIColor clearColor];
     activityIndicatorView.color = [UIColor lightGrayColor];
-    [subVisualEffectView addSubview:activityIndicatorView];
+    [subVisualEffectView.contentView addSubview:activityIndicatorView];
     [activityIndicatorView startAnimating];
     
     self.backgroundColor = [UIColor colorWithWhite:0.0 alpha:backgroundTransparency];
